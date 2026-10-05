@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Abide Project | Abide in Him. Live by His Word.</title>
+
+  <meta name="description"
+        content="The Abide Project — Faith, Hope, Grace, Scripture and Prayer.">
+
+  <style>
+    :root {
+      --cream: #f5f0e7;
+      --cream-dark: #e8dfd0;
+      --green: #283329;
+      --green-light: #56634d;
+      --black: #1e241f;
+      --terracotta: #c87952;
+      --gold: #c8a66a;
+      --white: #fffdf8;
+      --text-light: #77756d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 15px 6%;
+
+      transition: 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(245, 240, 231, 0.96);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    .menu {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 25px;
+      color: var(--green);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      height: 100vh;
+      min-height: 650px;
+      position: relative;
+      overflow: hidden;
+
+      background-image:
+        linear-gradient(
+          rgba(20, 28, 22, 0.10),
+          rgba(20, 28, 22, 0.28)
+        ),
+        url("images/banner.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      position: absolute;
+      left: 7%;
+      bottom: 12%;
+      max-width: 540px;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.95;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content span {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 50px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .button-light {
+      background: white;
+      color: var(--green);
+    }
+
+    .button-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 25px;
+      right: 6%;
+      color: white;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       GENERAL
+    ========================== */
+
+    section {
+      padding: 110px 7%;
+    }
+
+    .label {
+      color: var(--terracotta);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 10px;
+      margin-bottom: 17px;
+    }
+
+    .heading {
+      color: var(--green);
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: 1.05;
+    }
+
+    .description {
+      max-width: 650px;
+      color: var(--text-light);
+      font-size: 16px;
+      margin-top: 22px;
+    }
+
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro {
+      background: var(--cream);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .intro-logo {
+      width: min(100%, 480px);
+      display: block;
+      margin: auto;
+      border-radius: 50%;
+    }
+
+    /* =========================
+       VERSE
+    ========================== */
+
+    .verse-section {
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .verse-section .label {
+      color: var(--gold);
+    }
+
+    .verse {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .verse-text {
+      font-family: Georgia, serif;
+      font-size: clamp(36px, 6vw, 70px);
+      line-height: 1.1;
+      margin: 25px 0;
+    }
+
+    .reference {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #d4cbbb;
+    }
+
+    .verse-reflection {
+      max-width: 620px;
+      margin: 30px auto;
+      color: #cdd1c8;
+    }
+
+    /* =========================
+       DAILY ABIDE
+    ========================== */
+
+    .daily {
+      background: var(--cream-dark);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 55px;
+      border-top: 1px solid rgba(40,51,41,0.15);
+      border-bottom: 1px solid rgba(40,51,41,0.15);
+    }
+
+    .step {
+      padding: 35px 25px;
+      border-right: 1px solid rgba(40,51,41,0.15);
+    }
+
+    .step:last-child {
+      border-right: none;
+    }
+
+    .step-number {
+      color: var(--terracotta);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .step h3 {
+      font-size: 25px;
+      margin: 18px 0 10px;
+    }
+
+    .step p {
+      color: var(--text-light);
+      font-size: 13px;
+    }
+
+    /* =========================
+   DAILY ABIDE CARD
+========================= */
+
+.daily-header {
+  max-width: 750px;
+}
+
+.daily-card {
+  max-width: 1000px;
+  margin: 55px auto 0;
+  background: var(--white);
+  padding: 55px;
+  box-shadow: 0 25px 60px rgba(30,36,31,.08);
+}
+
+.daily-date {
+  color: var(--terracotta);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.daily-verse {
+  max-width: 800px;
+  margin: 25px auto 10px;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 55px);
+  line-height: 1.15;
+  color: var(--green);
+}
+
+.daily-reference {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.daily-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--terracotta);
+  margin: 40px auto;
+}
+
+.daily-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+}
+
+.daily-small-title {
+  color: var(--terracotta);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.daily-content p {
+  color: var(--text-light);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.daily-content .prayer-text {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: var(--green);
+  line-height: 1.7;
+}
+
+.daily-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 45px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(40,51,41,.12);
+}
+
+.daily-bottom span {
+  color: var(--text-light);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.daily-nav {
+  border: none;
+  background: none;
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.daily-nav:hover {
+  color: var(--terracotta);
+}
+
+
+/* DAILY MOBILE */
+
+@media (max-width: 700px) {
+
+  .daily-card {
+    padding: 30px 22px;
+  }
+
+  .daily-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .daily-bottom {
+    gap: 15px;
+  }
+
+}
+
+    .reels {
+      background: var(--cream);
+    }
+
+    .reels-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .reel {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      display: flex;
+      align-items: end;
+      padding: 28px;
+      color: white;
+      border-radius: 5px;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(15, 22, 17, 0.9),
+          rgba(15,22,17,0.05)
+        ),
+        linear-gradient(
+          140deg,
+          #d5b47f,
+          #69745e,
+          #283329
+        );
+
+      transition: 0.4s;
+    }
+
+    .reel:nth-child(2) {
+      background:
+        linear-gradient(to top, rgba(15,22,17,.9), transparent),
+        linear-gradient(140deg, #c77e5e, #69725a, #263129);
+    }
+
+    .reel:nth-child(3) {
+      background:
+        linear-gradient(to top, rgba(15,22,17,.9), transparent),
+        linear-gradient(140deg, #d5c19b, #68765e, #29352b);
+    }
+
+    .reel:nth-child(4) {
+      background:
+        linear-gradient(to top, rgba(15,22,17,.9), transparent),
+        linear-gradient(140deg, #9b9c89, #485440, #222a24);
+    }
+
+    .reel:nth-child(5) {
+      background:
+        linear-gradient(to top, rgba(15,22,17,.9), transparent),
+        linear-gradient(140deg, #d19a70, #76644f, #273128);
+    }
+
+    .reel:nth-child(6) {
+      background:
+        linear-gradient(to top, rgba(15,22,17,.9), transparent),
+        linear-gradient(140deg, #c98b6d, #59634f, #202820);
+    }
+
+    .reel:hover {
+      transform: translateY(-7px);
+    }
+
+    .play {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+
+      width: 45px;
+      height: 45px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+    }
+
+    .reel h3 {
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    .reel small {
+      display: block;
+      margin-top: 10px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: .7;
+    }
+
+    /* =========================
+       PRAYER
+    ========================== */
+
+    .prayer {
+      background: #e6ddd0;
+    }
+
+    .prayer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .prayer-form {
+      background: var(--white);
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(30,36,31,.08);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(40,51,41,.15);
+      background: #faf7f0;
+      padding: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit {
+      width: 100%;
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      background: var(--green);
+      color: white;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .privacy {
+      margin-top: 10px;
+      color: var(--text-light);
+      font-size: 10px;
+    }
+
+    /* =========================
+       TELUGU
+    ========================== */
+
+    .telugu {
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .telugu .label {
+      color: var(--gold);
+    }
+
+    .telugu .heading {
+      color: white;
+    }
+
+    .telugu-text {
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 5vw, 58px);
+      margin: 30px 0;
+    }
+
+    .telugu p {
+      max-width: 600px;
+      margin: auto;
+      color: #d1d5cd;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about {
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .about-inner {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .quote {
+      font-family: Georgia, serif;
+      color: var(--green);
+      font-size: clamp(30px, 5vw, 55px);
+      line-height: 1.2;
+      margin: 25px 0;
+    }
+
+    /* =========================
+       INSTAGRAM
+    ========================== */
+
+    .instagram {
+      text-align: center;
+      background: #ded4c4;
+    }
+
+    .handle {
+      font-family: Georgia, serif;
+      color: var(--green);
+      font-size: clamp(35px, 6vw, 70px);
+      margin: 20px 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #1c231e;
+      color: white;
+      padding: 65px 7% 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-logo {
+      font-family: Georgia, serif;
+      letter-spacing: 4px;
+      font-size: 19px;
+    }
+
+    .footer-tagline {
+      color: #9ea49c;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: #bfc4bc;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 22px;
+      color: #777d76;
+      font-size: 10px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 5%;
+        right: 5%;
+
+        flex-direction: column;
+        gap: 18px;
+
+        padding: 25px;
+
+        background: rgba(245,240,231,.98);
+        box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        background-position: 60% center;
+      }
+
+      .hero-content {
+        left: 6%;
+        right: 6%;
+        bottom: 12%;
+      }
+
+      .hero-content h1 {
+        font-size: 47px;
+      }
+
+      .intro-grid,
+      .prayer-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .intro-logo {
+        max-width: 340px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid rgba(40,51,41,.15);
+      }
+
+      .reel-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .nav-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .reels-header {
+        display: block;
+      }
+
+      .reel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reel {
+        min-height: 480px;
+      }
+
+      .prayer-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav id="navbar">
+
+    <a href="#home">
+      <img
+        src="images/logo.jpg"
+        alt="The Abide Project"
+        class="nav-logo"
+      >
+    </a>
+
+    <button class="menu" id="menu">
+      ☰
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#scripture">Scripture</a></li>
+      <li><a href="#daily">Daily Abide</a></li>
+      <li><a href="#reels">Reels</a></li>
+      <li><a href="#prayer">Prayer</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>Abide.</h1>
+
+      <p>
+        Abide in Him. Live by His Word.
+      </p>
+
+      <span>
+        Faith &nbsp; • &nbsp; Hope &nbsp; • &nbsp; Grace
+      </span>
+
+      <div class="hero-buttons">
+
+        <a href="#scripture" class="button button-light">
+          Explore the Word
+        </a>
+
+        <a href="#prayer" class="button button-outline">
+          Send a Prayer
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="scroll-note">
+      Take a moment ↓
+    </div>
+
+  </header>
+
+
+  <!-- INTRO -->
+
+  <section class="intro" id="about">
+
+    <div class="intro-grid">
+
+      <div>
+        <img
+          src="images/logo.jpg"
+          alt="The Abide Project logo"
+          class="intro-logo"
+        >
+      </div>
+
+      <div>
+
+        <div class="label">
+          The Invitation
+        </div>
+
+        <h2 class="heading">
+          Slow down.<br>
+          Be still.<br>
+          Abide.
+        </h2>
+
+        <p class="description">
+          In a world that constantly asks us to move faster,
+          The Abide Project is an invitation to pause.
+        </p>
+
+        <p class="description">
+          To breathe. To open His Word. To pray.
+          To remember that you are not walking alone.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCRIPTURE -->
+
+  <section class="verse-section" id="scripture">
+
+    <div class="verse">
+
+      <div class="label">
+        One More Verse
+      </div>
+
+      <div class="verse-text">
+        “Abide in me,<br>
+        and I in you.”
+      </div>
+
+      <div class="reference">
+        John 15:4
+      </div>
+
+      <p class="verse-reflection">
+        You don't have to have everything figured out.
+        Stay close to Jesus. Let Him lead you one step at a time.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- DAILY ABIDE -->
+
+<section class="daily" id="daily">
+
+  <div class="daily-header">
+
+    <div class="label">
+      Daily Abide
+    </div>
+
+    <h2 class="heading">
+      A moment with God.<br>
+      Every day.
+    </h2>
+
+    <p class="description">
+      Pause. Open His Word. Listen. Pray. Abide.
+    </p>
+
+  </div>
+
+
+  <div class="daily-card">
+
+    <div class="daily-date">
+      OCTOBER 5, 2026
+    </div>
+
+    <div class="daily-verse">
+      “Be still, and know that I am God.”
+    </div>
+
+    <div class="daily-reference">
+      Psalm 46:10
+    </div>
+
+
+    <div class="daily-divider"></div>
+
+
+    <div class="daily-content">
+
+      <div>
+
+        <div class="daily-small-title">
+          TODAY'S REFLECTION
+        </div>
+
+        <p>
+          Sometimes God doesn't ask us to move faster.
+          He asks us to become still.
+        </p>
+
+        <p>
+          You don't need to have everything figured out today.
+          Bring your worries to Him, trust His timing,
+          and remember that He is already working.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <div class="daily-small-title">
+          TODAY'S PRAYER
+        </div>
+
+        <p class="prayer-text">
+          Jesus, help me slow down today.
+          Quiet my heart and help me recognize Your presence.
+          Teach me to trust You even when I cannot see
+          what You are doing. Amen.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="daily-bottom">
+
+      <button class="daily-nav" onclick="previousAbide()">
+        ← Previous
+      </button>
+
+      <span>
+        ABIDE IN HIM
+      </span>
+
+      <button class="daily-nav" onclick="nextAbide()">
+        Next →
+      </button>
+
+    </div>
+
+  </div>
+
+  </section>
+
+
+  <!-- REELS -->
+
+  <section class="reels" id="reels">
+
+    <div class="reels-header">
+
+      <div>
+
+        <div class="label">
+          From The Abide Project
+        </div>
+
+        <h2 class="heading">
+          God, I Needed<br>
+          This Today.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="reel-grid">
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>God has not<br>forgotten you.</h3>
+          <small>God, I Needed This</small>
+        </div>
+
+      </a>
+
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>Read this<br>before you sleep.</h3>
+          <small>Before You Sleep</small>
+        </div>
+
+      </a>
+
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>When God<br>feels silent...</h3>
+          <small>Faith & Hope</small>
+        </div>
+
+      </a>
+
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>A prayer for<br>the person who feels lost.</h3>
+          <small>Let's Pray</small>
+        </div>
+
+      </a>
+
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>You don't need<br>to see the whole road.</h3>
+          <small>One More Verse</small>
+        </div>
+
+      </a>
+
+
+      <a class="reel" href="https://www.instagram.com/" target="_blank">
+
+        <div class="play">▶</div>
+
+        <div>
+          <h3>Keep walking<br>with Jesus.</h3>
+          <small>Abide Moments</small>
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRAYER -->
+
+  <section class="prayer" id="prayer">
+
+    <div class="prayer-grid">
+
+      <div>
+
+        <div class="label">
+          Let's Pray
+        </div>
+
+        <h2 class="heading">
+          You don't have<br>
+          to carry it alone.
+        </h2>
+
+        <p class="description">
+          Whatever you're walking through,
+          you can share it here.
+        </p>
+
+        <p class="description">
+          We believe prayer matters.
+        </p>
+
+      </div>
+
+
+      <form
+        class="prayer-form"
+        id="prayerForm"
+        action="https://formspree.io/f/xppqzbjl"
+        method="POST"
+>
+
+        <div class="form-group">
+
+          <label>Name (optional)</label>
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Email (optional)</label>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Prayer category</label>
+
+          <select name="category">
+
+            <option>Family</option>
+            <option>Healing</option>
+            <option>Career</option>
+            <option>Studies</option>
+            <option>Relationships</option>
+            <option>Spiritual Growth</option>
+            <option>Fear & Anxiety</option>
+            <option>Thanksgiving</option>
+            <option>Other</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>Your prayer request</label>
+
+          <textarea
+          name="prayer_request"
+            placeholder="Write your prayer request here..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <button class="submit" type="submit">
+          Send Prayer Request
+        </button>
+
+        <div class="privacy">
+          Your prayer request is submitted privately and will only be used
+    for prayer and ministry purposes.
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- TELUGU -->
+
+  <section class="telugu">
+
+    <div class="label">
+      Telugu Faith
+    </div>
+
+    <h2 class="heading">
+      వాక్యం • విశ్వాసం • ప్రార్థన
+    </h2>
+
+    <div class="telugu-text">
+      “దేవుడు నిన్ను మర్చిపోలేదు.”
+    </div>
+
+    <p>
+      God has not forgotten you.
+      Discover Telugu Scripture, encouragement
+      and prayer through The Abide Project.
+    </p>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about">
+
+    <div class="about-inner">
+
+      <div class="label">
+        Why The Abide Project?
+      </div>
+
+      <div class="quote">
+        “Not perfection.<br>
+        Not performance.<br>
+        Just Jesus.”
+      </div>
+
+      <p class="description" style="margin:auto;">
+        The Abide Project exists to point people back to Jesus.
+        Through Scripture, prayer, stories and simple reminders,
+        we want to create a space where people can slow down,
+        find hope and discover what it means to remain in Christ.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- INSTAGRAM -->
+
+  <section class="instagram" id="instagram">
+
+    <div class="label">
+      Follow The Journey
+    </div>
+
+    <h2 class="handle">
+      @theabideproject
+    </h2>
+
+    <p>
+      More Scripture. More hope. More Jesus.
+    </p>
+
+    <br>
+
+    <!-- CHANGE THIS TO YOUR REAL INSTAGRAM LINK -->
+
+    <a
+      href="https://www.instagram.com/_abidewithgoddaily_/"
+      target="_blank"
+      class="button"
+      style="background:#283329;color:white;"
+    >
+      Follow on Instagram →
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-top">
+
+      <div>
+
+        <div class="footer-logo">
+          THE ABIDE PROJECT
+        </div>
+
+        <div class="footer-tagline">
+          Abide in Him. Live by His Word.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#home">Home</a>
+        <a href="#scripture">Scripture</a>
+        <a href="#daily">Daily Abide</a>
+        <a href="#reels">Reels</a>
+        <a href="#prayer">Prayer</a>
+        <a href="#about">About</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 The Abide Project
+      </span>
+
+      <span>
+        John 15:4
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /* NAVIGATION */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* MOBILE MENU */
+
+    const menu = document.getElementById("menu");
+    const navLinks = document.getElementById("navLinks");
+
+    menu.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+
+    });
+
+    function previousAbide() {
+  alert("Previous Daily Abide messages will be available soon. 🙏");
+}
+
+function nextAbide() {
+  alert("The next Daily Abide will be available tomorrow. 🙏");
+}
+
+  </script>
+
+</body>
+</html>
