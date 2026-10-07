@@ -1022,17 +1022,11 @@
 
   <div class="daily-card">
 
-    <div class="daily-date">
-      OCTOBER 5, 2026
-    </div>
+    <div class="daily-date" id="dailyDate"></div>
 
-    <div class="daily-verse">
-      “Be still, and know that I am God.”
-    </div>
+    <div class="daily-verse" id="dailyVerse"></div>
 
-    <div class="daily-reference">
-      Psalm 46:10
-    </div>
+<div class="daily-reference" id="dailyReference"></div>
 
 
     <div class="daily-divider"></div>
@@ -1047,7 +1041,8 @@
         </div>
 
         <p>
-          Sometimes God doesn't ask us to move faster.
+         <div id="dailyReflection">
+        Sometimes God doesn't ask us to move faster.
           He asks us to become still.
         </p>
 
@@ -1066,7 +1061,7 @@
           TODAY'S PRAYER
         </div>
 
-        <p class="prayer-text">
+        <p class="prayer-text" id="dailyPrayer">
           Jesus, help me slow down today.
           Quiet my heart and help me recognize Your presence.
           Teach me to trust You even when I cannot see
@@ -1080,7 +1075,9 @@
 
     <div class="daily-bottom">
 
-      <button class="daily-nav" onclick="previousAbide()">
+      <button class="daily-nav" 
+      onclick="previousAbide()"
+      >
         ← Previous
       </button>
 
@@ -1088,7 +1085,9 @@
         ABIDE IN HIM
       </span>
 
-      <button class="daily-nav" onclick="nextAbide()">
+      <button class="daily-nav" 
+      onclick="nextAbide()"
+      >
         Next →
       </button>
 
@@ -1385,13 +1384,13 @@
     <!-- CHANGE THIS TO YOUR REAL INSTAGRAM LINK -->
 
     <a
-      href="https://www.instagram.com/_abidewithgoddaily_/"
-      target="_blank"
-      class="button"
-      style="background:#283329;color:white;"
-    >
-      Follow on Instagram →
-    </a>
+  href="https://www.instagram.com/_abideingoddaily_/"
+  target="_blank"
+  class="button"
+  style="background:#283329;color:white;"
+>
+  Follow on Instagram →
+</a>
 
   </section>
 
@@ -1444,46 +1443,407 @@
 
   <script>
 
-    /* NAVIGATION */
+  /* NAVIGATION */
 
-    const navbar = document.getElementById("navbar");
+  const navbar = document.getElementById("navbar");
 
-    window.addEventListener("scroll", () => {
+  window.addEventListener("scroll", () => {
 
-      if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
 
+  });
+
+
+  /* MOBILE MENU */
+
+  const menu = document.getElementById("menu");
+  const navLinks = document.getElementById("navLinks");
+
+  menu.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
     });
 
-
-    /* MOBILE MENU */
-
-    const menu = document.getElementById("menu");
-    const navLinks = document.getElementById("navLinks");
-
-    menu.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
+  });
 
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+  /* =========================
+     DAILY ABIDE
+  ========================= */
 
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
+  const dailyAbides = [
 
-    });
+    {
+      verse: "“Be still, and know that I am God.”",
+      reference: "Psalm 46:10",
+      reflection:
+        "In the noise and rush of life, God invites us to pause. Being still is not about doing nothing. It is about choosing to be present with Him. When we quiet our hearts, we remember that He is in control.",
+      prayer:
+        "Lord, help me to be still today. Quiet my heart, calm my thoughts, and help me remember that You are God. I trust You with today. Amen."
+    },
 
-    function previousAbide() {
-  alert("Previous Daily Abide messages will be available soon. 🙏");
+    {
+      verse: "“Abide in me, and I in you.”",
+      reference: "John 15:4",
+      reflection:
+        "Jesus does not call us to walk through life in our own strength. He invites us to remain close to Him. Stay connected to Jesus today and let His presence shape your thoughts, words, and decisions.",
+      prayer:
+        "Jesus, help me remain close to You today. Teach me to depend on You instead of trying to do everything in my own strength. Amen."
+    },
+
+    {
+      verse: "“The Lord is my shepherd; I shall not want.”",
+      reference: "Psalm 23:1",
+      reflection:
+        "You are not walking through today alone. The Shepherd knows where you are, what you need, and where He is leading you. Trust Him with the road ahead.",
+      prayer:
+        "Lord, You are my Shepherd. Lead me today and help me trust Your direction even when I cannot see the whole road. Amen."
+    },
+
+    {
+      verse: "“Trust in the Lord with all thine heart.”",
+      reference: "Proverbs 3:5",
+      reflection:
+        "You may not understand everything God is doing right now. But you can still trust Him. Faith begins when we choose God's wisdom over our own understanding.",
+      prayer:
+        "Father, help me trust You even when I don't understand. Lead me according to Your wisdom and not my own. Amen."
+    },
+
+    {
+      verse: "“I will never leave thee, nor forsake thee.”",
+      reference: "Hebrews 13:5",
+      reflection:
+        "Whatever today brings, God's presence does not depend on your circumstances. You may feel alone, but you are never abandoned by Him.",
+      prayer:
+        "Lord, remind me today that You are with me. When I feel alone or afraid, help me rest in Your presence. Amen."
+    },
+
+    {
+      verse: "“Fear thou not; for I am with thee.”",
+      reference: "Isaiah 41:10",
+      reflection:
+        "Fear can make tomorrow feel bigger than it really is. God does not ask you to face tomorrow alone. His presence is greater than the thing you fear.",
+      prayer:
+        "God, replace my fear with faith. Help me remember that You are with me and that I do not have to face today alone. Amen."
+    },
+
+    {
+      verse: "“The Lord is my light and my salvation; whom shall I fear?”",
+      reference: "Psalm 27:1",
+      reflection:
+        "When everything around you feels uncertain, remember who God is. He is your light when you cannot see the way forward and your strength when you feel weak.",
+      prayer:
+        "Lord, be my light today. Help me walk forward with courage because I know You are with me. Amen."
+    },
+
+    {
+      verse: "“Cast thy burden upon the Lord, and he shall sustain thee.”",
+      reference: "Psalm 55:22",
+      reflection:
+        "You were never meant to carry every burden by yourself. Give God the things that are weighing heavily on your heart and trust Him to sustain you.",
+      prayer:
+        "Father, I give You the burdens I have been carrying. Give me Your peace and strength for today. Amen."
+    },
+
+    {
+      verse: "“Come unto me, all ye that labour and are heavy laden, and I will give you rest.”",
+      reference: "Matthew 11:28",
+      reflection:
+        "Jesus does not turn away the tired and weary. He invites you to come exactly as you are. His presence is a place of rest for your soul.",
+      prayer:
+        "Jesus, I come to You today with everything I am carrying. Give my heart Your rest and teach me to depend on You. Amen."
+    },
+
+    {
+      verse: "“The Lord is near unto all them that call upon him.”",
+      reference: "Psalm 145:18",
+      reflection:
+        "Your prayer does not disappear into silence. God is near to those who call upon Him. Speak honestly to Him today. He is listening.",
+      prayer:
+        "Lord, thank You that You are near. Help me speak to You honestly and trust that You hear every prayer. Amen."
+    },
+
+    {
+      verse: "“My grace is sufficient for thee.”",
+      reference: "2 Corinthians 12:9",
+      reflection:
+        "You don't have to be strong enough for everything. God's grace meets you in your weakness. Where you feel insufficient, His grace is sufficient.",
+      prayer:
+        "Jesus, when I feel weak or inadequate, remind me that Your grace is enough. Help me depend on You. Amen."
+    },
+
+    {
+      verse: "“The joy of the Lord is your strength.”",
+      reference: "Nehemiah 8:10",
+      reflection:
+        "Your strength does not always come from having an easy day. Sometimes it comes from remembering who God is and finding joy in His presence.",
+      prayer:
+        "Lord, restore my joy today. Let Your presence become my strength regardless of what I face. Amen."
+    },
+
+    {
+      verse: "“Commit thy works unto the Lord, and thy thoughts shall be established.”",
+      reference: "Proverbs 16:3",
+      reflection:
+        "Give your plans to God before you give them your worry. Invite Him into your decisions, your work, your relationships, and your future.",
+      prayer:
+        "Father, I place my plans in Your hands. Guide my thoughts and establish my steps according to Your will. Amen."
+    },
+
+    {
+      verse: "“He restoreth my soul.”",
+      reference: "Psalm 23:3",
+      reflection:
+        "God cares about the places in your heart that feel tired and empty. He is able to restore what life has worn down.",
+      prayer:
+        "Lord, restore my soul. Renew my strength and draw me closer to You today. Amen."
+    },
+
+    {
+      verse: "“We walk by faith, not by sight.”",
+      reference: "2 Corinthians 5:7",
+      reflection:
+        "You may not be able to see what God is doing yet. That doesn't mean He isn't working. Faith means continuing to walk with Him even when the next step isn't completely clear.",
+      prayer:
+        "Lord, help me walk by faith today. When I cannot see the way forward, help me trust You with the next step. Amen."
+    },
+
+    {
+      verse: "“If God be for us, who can be against us?”",
+      reference: "Romans 8:31",
+      reflection:
+        "Your circumstances don't get the final word. God is for you. Let that truth give you courage today.",
+      prayer:
+        "Father, remind me that You are for me. Give me courage to face today with faith instead of fear. Amen."
+    },
+
+    {
+      verse: "“The Lord shall fight for you, and ye shall hold your peace.”",
+      reference: "Exodus 14:14",
+      reflection:
+        "There are battles you cannot solve by trying harder. Sometimes faith means becoming still and trusting God to work where you cannot.",
+      prayer:
+        "Lord, I give You the battles I cannot fight. Help me be still, trust You, and wait for Your direction. Amen."
+    },
+
+    {
+      verse: "“Thy word is a lamp unto my feet, and a light unto my path.”",
+      reference: "Psalm 119:105",
+      reflection:
+        "God may not show you the entire journey, but His Word gives enough light for the next step. Stay close to Scripture today.",
+      prayer:
+        "Lord, let Your Word guide my steps today. Give me enough light for the next step and the faith to follow You. Amen."
+    },
+
+    {
+      verse: "“This is the day which the Lord hath made; we will rejoice and be glad in it.”",
+      reference: "Psalm 118:24",
+      reflection:
+        "Today is a gift. Don't let yesterday steal it or tomorrow overwhelm it. Receive this day and look for God's goodness in it.",
+      prayer:
+        "Lord, thank You for this new day. Help me notice Your goodness and live today with gratitude. Amen."
+    },
+
+    {
+      verse: "“The Lord bless thee, and keep thee.”",
+      reference: "Numbers 6:24",
+      reflection:
+        "Before you step into today's responsibilities, remember that you are held by God. His care goes with you wherever you go.",
+      prayer:
+        "Lord, keep me today. Guide my decisions, protect my heart, and help me walk in Your ways. Amen."
+    }
+
+  ];
+
+
+  /* Get today's day number */
+
+  function getDayOfYear(date) {
+
+    const start = new Date(date.getFullYear(), 0, 0);
+
+    const diff =
+      date -
+      start +
+      (
+        (start.getTimezoneOffset() -
+        date.getTimezoneOffset()) * 60000
+      );
+
+    return Math.floor(diff / 86400000);
+
+  }
+
+
+  /* =========================
+   DAILY ABIDE NAVIGATION
+========================= */
+
+let currentAbideOffset = 0;
+
+
+/* Get today's day number */
+
+function getDayOfYear(date) {
+
+  const start = new Date(
+    date.getFullYear(),
+    0,
+    0
+  );
+
+  const diff =
+    date -
+    start +
+    (
+      (start.getTimezoneOffset() -
+      date.getTimezoneOffset()) * 60000
+    );
+
+  return Math.floor(diff / 86400000);
 }
+
+
+/* =========================
+   DAILY ABIDE NAVIGATION
+========================= */
+
+
+/* Display Daily Abide */
+
+function showAbide() {
+
+  const date = new Date();
+
+  date.setDate(
+    date.getDate() + currentAbideOffset
+  );
+
+
+  const dayOfYear =
+    getDayOfYear(date);
+
+
+  const index =
+    (dayOfYear - 1) % dailyAbides.length;
+
+
+  const message =
+    dailyAbides[index];
+
+
+  const formattedDate =
+    date.toLocaleDateString(
+      "en-US",
+      {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      }
+    );
+
+
+  document.getElementById("dailyDate").textContent =
+    formattedDate.toUpperCase();
+
+
+  document.getElementById("dailyVerse").textContent =
+    message.verse;
+
+
+  document.getElementById("dailyReference").textContent =
+    message.reference;
+
+
+  document.getElementById("dailyReflection").textContent =
+    message.reflection;
+
+
+  document.getElementById("dailyPrayer").textContent =
+    message.prayer;
+}
+
+
+/* Show "Come back tomorrow" */
+
+function showTomorrowMessage() {
+
+  document.getElementById("dailyDate").textContent =
+    "TOMORROW";
+
+
+  document.getElementById("dailyVerse").textContent =
+    "🌿 Come back tomorrow";
+
+
+  document.getElementById("dailyReference").textContent =
+    "";
+
+
+  document.getElementById("dailyReflection").textContent =
+    "The next Daily Abide will be available tomorrow.";
+
+
+  document.getElementById("dailyPrayer").textContent =
+    "Abide in Him. Live by His Word.";
+}
+
+
+/* Previous day */
+
+function previousAbide() {
+
+  currentAbideOffset = -1;
+
+  showAbide();
+
+}
+
+
+/* Next button */
 
 function nextAbide() {
-  alert("The next Daily Abide will be available tomorrow. 🙏");
+
+  /*
+     If viewing yesterday,
+     Next returns to today.
+  */
+
+  if (currentAbideOffset === -1) {
+
+    currentAbideOffset = 0;
+
+    showAbide();
+
+    return;
+  }
+
+
+  /*
+     If viewing today,
+     DO NOT show tomorrow.
+  */
+
+  showTomorrowMessage();
+
 }
+
+
+/* Load today's message */
+
+currentAbideOffset = 0;
+
+showAbide();
 
   </script>
 
